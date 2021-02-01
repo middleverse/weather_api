@@ -1,17 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+<div class="container" style="height:100%;">
 
-    <div class='row mt-4'>
-        <div class='col text-center h3'>Your Weather</div>
+    <div class="row justify-content-center align-items-center" style="height:100%;">
+        <div class="col-md-8 col-10 border-primary-my py-5 bg-white">
+            <div class='row mt-4'>
+                <div class='col text-center h3'>Your Weather App</div>
+            </div>
+
+            <dic class='row mt-4'>
+                <div class="col-auto mx-auto form-group">
+                    <form id="city-form" method="GET" action="/v1/api/">
+                        <label for="fname">Enter City:</label><br>
+                        <input type="text" id="city" name="city"><br><br>
+                        <input class='btn bg-success text-light' type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <form id="city-form" method="GET" action="/v1/api/">
-        <label for="fname">Enter City:</label><br>
-        <input type="text" id="city" name="city"><br>
-        <input type="submit">
-    </form>
+
 
 </div>
 
