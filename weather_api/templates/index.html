@@ -9,27 +9,42 @@
                 <div class='col text-center h3'>Your Weather App</div>
             </div>
 
-            <dic class='row mt-4'>
+            <div class='row mt-4'>
                 <div class="col-auto mx-auto form-group">
                     <form id="city-form" method="GET" action="/v1/api/">
                         <label for="fname">Enter City:</label><br>
                         <input type="text" id="city" name="city"><br><br>
-                        <input class='btn bg-success text-light' type="submit">
+                        <input class='btn bg-success text-light' type="submit" value="Get Weather">
                     </form>
                 </div>
             </div>
+
+            <div class='row mt-4'>
+                <div class="col-auto mx-auto">
+                    <p><span>Current Temp: </span><span id='temperature'>??</span><span> C</span</p>
+                    <p><span>Feels Like: </span><span id='feels-like'>??</span><span> C</span</p>
+                    <p><span>Humidity: </span><span id='humidity'>??</span><span> %rh</span</p>
+                    <p><span>Wind: </span><span id='wind'>??</span><span> %rh</span</p>
+                </div>
+            </div>
         </div>
-
     </div>
-
-
-
 </div>
 
 <script>
 
 // JAVASCRIPT
 // ==========
+
+const kelvin = -273.15
+
+const convert_to_celsius = function(str_temp) {
+    temp = parseFloat(str_temp)
+    temp = temp + kelvin
+    return temp.toFixed(1)
+}
+
+
 document.getElementById('city-form').addEventListener('submit', function(event) {
     event.preventDefault();
     const form = event.target
@@ -47,11 +62,25 @@ document.getElementById('city-form').addEventListener('submit', function(event) 
             const r = xhr.response
             r_json = JSON.parse(r)
             console.log(r_json)
+            name = r_json['name']
+            temperature = r_json['main']['temp']
+            temperature = convert_to_celsius(temperature)
+            feels_like = r_json['main']['feels_like']
+            feels_like = convert_to_celsius(feels_like)
+            humidity = r_json['main']['humidity']
+            wind = r_json['wind']['speed']
+
+            document.getElementById('temperature').innerHTML = temperature
+            document.getElementById('feels-like').innerHTML = feels_like
+            document.getElementById('humidity').innerHTML = humidity
+            document.getElementById('wind').innerHTML = wind
+            console.log(name)
         }     
+        
         else {
             const r = xhr.response
             console.log(r)
-            alert("An error has ocurred: ", r)
+            alert("Please provide a city name.")
         }
     }
 
