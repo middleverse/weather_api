@@ -1,4 +1,4 @@
-import requests
+import requests, json
 
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -14,14 +14,17 @@ def weather(request):
     '''
     if request.method == 'GET':
         try:
-            city = request.GET['city']
+            city = request.GET['city'].lower()
         except Exception as e:
             return HttpResponse('Search parameter ' + str(e) + ' required.' , status=202)
         if not city:
-            return HttpResponse('Please provide a city name.', status=202)
+            return HttpResponse('Please provide a city name.', status=400)
         # make OpenWeatherMap API request
         post_url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + API_KEY + '&unit=metric'
         r = requests.get(post_url)
+        r_json = r.json()
+        if r.status_code == 404:
+            return HttpResponse('Invalid city entered', status=404)
         return HttpResponse(r.content, status=200)
-    return HttpResponse('POST requests are not allowed, try GET.', status=202)
+    return HttpResponse('POST requests are not allowed, try GET.', status=403)
     
