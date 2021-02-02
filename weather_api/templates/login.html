@@ -12,7 +12,10 @@
                     <form class='form-group' action='/login/' method='post'>
                         {% csrf_token %}
                         {{ form }}
-                        <div class='row'>
+                        <div class='row mt-3'>
+                            <div class='col-auto mr-auto'>
+                                <a class='btn btn-dark' role="button" href='/'>Home</a>
+                            </div>
                             <div class='col-auto ml-auto'>
                                 <input class='btn btn-danger mr-2' type="submit" value="Login"><a href='/signup' class='btn btn-warning' role='button'>Signup</a>
                             </div>
