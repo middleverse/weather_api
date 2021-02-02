@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container" style="height:100%;">
+    <div class="row justify-content-center align-items-center" style="height:100%;">
+        <div class="col-md-8 col-10 border-primary-my px-5 py-5 bg-white">
+            <div class='row mt-4'>
+                <div class='col text-center h3'>Signup</div>
+            </div>
+            <div class='row mt-4'>
+                <div class='col'>
+                    <form action='/signup/' method='post'>
+                        {% csrf_token %}
+                        <div class='row mb-3'>
+                            <div class='col'>
+                                Email:
+                            </div>
+                            <div class='col'>
+                                {{ form.username }}
+                            </div>
+                        </div>
+                        <div class='row mb-3'>
+                            <div class='col'>
+                                Password:
+                            </div>
+                            <div class='col'>
+                                {{ form.password1 }}
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col'>
+                                Password Confirmation:
+                            </div>
+                            <div class='col'>
+                                {{ form.password2 }}
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-auto ml-auto'>
+                                <input class='btn btn-danger' type="submit" value="Signup">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+{% endblock %}
