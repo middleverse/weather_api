@@ -2,7 +2,18 @@
 
 {% block content %}
 <div class="container" style="height:100%;">
-
+    <nav class="container fixed-top mt-3">
+    {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <div class='row'>
+                <div class='col-auto ml-auto'>
+                    <button class="btn btn-dark btn-sm" type="submit">Log Out</button>
+                </div>
+            </div>
+        </form>
+    {% endif %}
+    </nav>
     <div class="row justify-content-center align-items-center" style="height:100%;">
         <div class="col-md-8 col-10 border-primary-my py-5 bg-white">
             <div class='row mt-4'>

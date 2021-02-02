@@ -13,7 +13,7 @@
                         {% csrf_token %}
                         <div class='row mb-3'>
                             <div class='col'>
-                                Email:
+                                Username:
                             </div>
                             <div class='col'>
                                 {{ form.username }}
@@ -35,6 +35,7 @@
                                 {{ form.password2 }}
                             </div>
                         </div>
+                        <div class='row mt-3'>Note: The password should be atleast 8 characters and it can't be entirely numeric.</div>
                         <div class='row'>
                             <div class='col-auto ml-auto'>
                                 <input class='btn btn-danger' type="submit" value="Signup">
