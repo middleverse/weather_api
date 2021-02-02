@@ -10,5 +10,9 @@
 - $ curl http://3.15.41.69:8000/v1/api/?city=vancouver
 - (doesn't work over HTTPS)
 
-### Uptime
-- Garunteed uptime: 6AM - 9PM EST until March 1st, 2021
+# System Design Brainstorm & Estimations
+- https://www.notion.so/ab92/Weather-API-62ae0d407fba4dfca2d236d043a2edea
+
+# Uptime
+### Garunteed uptime: 
+- 6AM - 9PM EST until March 1st, 2021
