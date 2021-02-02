@@ -14,5 +14,5 @@
 - https://www.notion.so/ab92/Weather-API-62ae0d407fba4dfca2d236d043a2edea
 
 # Uptime
-### Garunteed uptime: 
+### Guarunteed uptime: 
 - 6AM - 9PM EST until March 1st, 2021
